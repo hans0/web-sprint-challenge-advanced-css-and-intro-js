@@ -246,7 +246,8 @@ Example born in 1901 and died in 1959 - included -- born in 1889 and died in 192
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(artistArray){
-  /*Your Code Here*/
+  /* Original solution */
+  /*
   const result = [];
   for (let a in artistArray){
     let artist = artistArray[a];
@@ -256,6 +257,13 @@ function get20s(artistArray){
     }
   }
   return result;
+  */
+  /* STRETCH 3 version */
+  const tempArtist = artistArray.filter(function(a){
+    const years = a.years.split(" ");
+    return (years[0] >= 1900) && (years[2] <= 2000);
+  });
+  return tempArtist.map((artist) => artist.name);
 }
 
 
@@ -270,7 +278,7 @@ function get20s(artistArray){
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
 function removeArtist(artistArray, index){
-   /*Your Code Here*/
+  /*Original solution*/
    artistArray.splice(index, 1);
    return artistArray.length;
 }
@@ -293,7 +301,7 @@ Use addArtist to do the following:
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
 function addArtist(artistArray, newArtist){
-    /*Your Code Here*/
+  /*Original solution*/
     artistArray.push(newArtist);
     return artistArray;
   }
@@ -308,7 +316,8 @@ Use lotsOfArt to do the following:
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
 function lotsOfArt(artistArray){
-  /*Your Code Here*/
+  /* Original solution */
+  /*
   const result = [];
   for (let a in artistArray){
     let artist = artistArray[a];
@@ -317,6 +326,13 @@ function lotsOfArt(artistArray){
     }
   }
   return result;
+  */
+  /* STRETCH 3 solution */
+  const tempArtist = artistArray.filter(function(a){
+    return a.paintings > 100;
+  });
+  return tempArtist.map((artist) => artist.name);
+
 }
 
 
@@ -344,12 +360,28 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 ‼️ You do **NOT** need to get these to display on your page, but you can copy and paste the result into your HTML file if you'd like to see what that would look like. */
 
-function getHTML(/* Code here */){
-
+function getHTML(data){
     /* Code here */
-
+   
+   /*
+    const result = [];
+    for (let d of data){
+      console.log(d.name);
+      let url = "https://en.wikipedia.org/wiki/" + d.name.replaceAll(" ", "_");
+      result.push(  "<div id=\"artist\">" + `
+                      <div class = \"name\">\n
+                      <a href=` + url + ">"
+      
+      
+                  + "</div>"
+        
+      );
+    }
+    return result;
+*/
   }
 
+  console.log(getHTML(artists));
 
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
@@ -374,7 +406,7 @@ function randomize(artistArray){
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
- 
+ /* Look above the stretch goals */
  
  /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑*/
  function foo(){
