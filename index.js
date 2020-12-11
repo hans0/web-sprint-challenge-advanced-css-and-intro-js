@@ -230,7 +230,7 @@ console.log(artists[8].name);
  Example, if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
 function getArtistByIndex(artistArray, index) {
-  /*Your Code Here*/
+  /*Original solution*/
   let artist = artistArray[index];
   return "the artist at index " + index + " is " + artist.name;
 }  
@@ -354,17 +354,26 @@ function getHTML(/* Code here */){
 /* 💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪
 Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
-
+function randomize(artistArray){
     /* Code here */
-
+    // console.log(artistArray.length);
+    const result = [];
+    while (artistArray.length !== 0){
+      let index = Math.floor(Math.random() * (artistArray.length - 1));
+      console.log(index);
+      result.push(artistArray[index]);
+      artistArray.splice(index, 1);
+      // console.log("length: " + artistArray.length);
+    }
+    for (let r of result){
+      artistArray.push(r);
+    }
+    return artistArray;
   }
 
 
  /* 💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪
  Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
-
- 
  
  
  /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑*/
